@@ -12,15 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          node-version: '20'
 
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
-          node-version: '20'
 
       - name: Print Java Version
         run: java -version
