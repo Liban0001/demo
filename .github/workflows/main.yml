@@ -19,8 +19,14 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Print Java Version
+        run: java -version
+
+      - name: Print Gradle Version
+        run: gradle --version
+
       - name: Build with Gradle
-        run: gradle build
+        run: gradle build -s -i
 
       - name: Run tests
-        run: gradle test
+        run: gradle test -s -i
