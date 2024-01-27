@@ -1,8 +1,26 @@
-name: hello-world
-on: push
+name: Java CI with Testing
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  my-job:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Run tests
+        run: ./gradlew test
