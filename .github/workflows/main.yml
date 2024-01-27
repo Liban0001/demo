@@ -28,8 +28,16 @@ jobs:
       - name: Print Gradle Version
         run: gradle --version
 
+      - name: Set up Gradle and change directory
+        run: |
+          mkdir -p $HOME/.gradle
+          echo "org.gradle.daemon=false" >> $HOME/.gradle/gradle.properties
+        working-directory: ${{ github.workspace }}
+
       - name: Build with Gradle
         run: gradle build -s -i
+        working-directory: ${{ github.workspace }}
 
       - name: Run tests
         run: gradle test -s -i
+        working-directory: ${{ github.workspace }}
